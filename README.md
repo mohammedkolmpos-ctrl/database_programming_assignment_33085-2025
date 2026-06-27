@@ -1,8 +1,6 @@
 # database_programming_assignment_33085-2025
 # Individual Assignment I: CTEs & SQL Window Functions Project
-[cite_start]**Course Title:** Database Programming (DPR400210) [cite: 3]
-[cite_start]**Instructor:** Eric Maniraguha [cite: 3]
-[cite_start]**Institution:** University of Lay Adventists of Kigali (UNILAK) 
+
 
 ---
 
