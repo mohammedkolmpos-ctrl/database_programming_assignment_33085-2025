@@ -13,78 +13,71 @@
 * [cite_start]**Prescriptions**: Tracks the specific medications and quantities prescribed during appointments[cite: 13].
 * [cite_start]**Billings**: Records individual appointment financial transactions and payment status[cite: 13].
 
----
 
 ## [cite_start]2. Database Creation & Data Insertion (SQL Scripts) [cite: 13]
 
 
--- Create Doctors Table with a self-referencing relationship for management
+ Create Doctors Table with a self-referencing relationship for management
 CREATE TABLE Doctors (
     DoctorID INT PRIMARY KEY IDENTITY(1,1),
     DoctorName VARCHAR(100) NOT NULL,
     Specialty VARCHAR(50) NOT NULL,
     Salary DECIMAL(10,2),
     HireDate DATE,
-    ManagerID INT NULL FOREIGN KEY REFERENCES Doctors(DoctorID)
-);
+    ManagerID INT NULL FOREIGN KEY REFERENCES Doctors(DoctorID));
 
--- Create Patients Table
+Create Patients Table
 CREATE TABLE Patients (
     PatientID INT PRIMARY KEY IDENTITY(1,1),
     PatientName VARCHAR(100) NOT NULL,
     Gender VARCHAR(10),
     DateOfBirth DATE,
-    City VARCHAR(50)
-);
+    City VARCHAR(50));
 
--- Create Appointments Table linking Patients and Doctors
+ Create Appointments Table linking Patients and Doctors
 CREATE TABLE Appointments (
     AppointmentID INT PRIMARY KEY IDENTITY(1,1),
     PatientID INT FOREIGN KEY REFERENCES Patients(PatientID),
     DoctorID INT FOREIGN KEY REFERENCES Doctors(DoctorID),
     AppointmentDate DATE,
-    Status VARCHAR(20) -- Completed, Cancelled, Pending
-);
+    Status VARCHAR(20) -- Completed, Cancelled, Pending);
 
--- Create Medications Table
+Create Medications Table
 CREATE TABLE Medications (
     MedicationID INT PRIMARY KEY IDENTITY(1,1),
     MedicationName VARCHAR(100) NOT NULL,
-    Price DECIMAL(10,2) NOT NULL
-);
+    Price DECIMAL(10,2) NOT NULL);
 
--- Create Prescriptions Table linking Appointments and Medications
+ Create Prescriptions Table linking Appointments and Medications
 CREATE TABLE Prescriptions (
     PrescriptionID INT PRIMARY KEY IDENTITY(1,1),
     AppointmentID INT FOREIGN KEY REFERENCES Appointments(AppointmentID),
     MedicationID INT FOREIGN KEY REFERENCES Medications(MedicationID),
-    Quantity INT NOT NULL
-);
+    Quantity INT NOT NULL);
 
--- Create Billings Table linked directly to Appointments
+Create Billings Table linked directly to Appointments
 CREATE TABLE Billings (
     BillingID INT PRIMARY KEY IDENTITY(1,1),
     AppointmentID INT FOREIGN KEY REFERENCES Appointments(AppointmentID),
     Amount DECIMAL(10,2) NOT NULL,
-    PaymentStatus VARCHAR(20) -- Paid, Unpaid
-);
+    PaymentStatus VARCHAR(20) -- Paid, Unpaid);
 
 
--- Insert Doctors (Including Chief Medical Officer and Department Heads)
+Insert Doctors (Including Chief Medical Officer and Department Heads)
 INSERT INTO Doctors (DoctorName, Specialty, Salary, HireDate, ManagerID) VALUES
 ('Dr. Ahmed', 'Cardiology', 12000, '2020-01-15', NULL),   -- Chief Medical Officer
 ('Dr. Haneen', 'Pediatrics', 9500, '2022-03-10', 1),     -- Reports to Dr. Ahmed
 ('Dr. Ferdous', 'Cardiology', 11000, '2021-06-20', 1),   -- Reports to Dr. Ahmed
 ('Dr. Khalid', 'Neurology', 10500, '2023-01-05', 1);
 
--- Insert Patients
+ Insert Patients
 INSERT INTO Patients (PatientName, Gender, DateOfBirth, City) VALUES
 ('John Doe', 'Male', '1985-05-12', 'Kigali'),
 ('Jane Smith', 'Female', '1992-08-24', 'Gisenyi'),
 ('Ali Mustafa', 'Male', '1978-11-03', 'Kigali'),
 ('Grace Mutoni', 'Female', '2000-01-15', 'Butare');
 
--- Insert Appointments
+ Insert Appointments
 INSERT INTO Appointments (PatientID, DoctorID, AppointmentDate, Status) VALUES
 (1, 1, '2026-06-01', 'Completed'),
 (2, 2, '2026-06-02', 'Completed'),
@@ -93,14 +86,14 @@ INSERT INTO Appointments (PatientID, DoctorID, AppointmentDate, Status) VALUES
 (1, 4, '2026-06-20', 'Completed'),
 (2, 1, '2026-06-25', 'Completed');
 
--- Insert Medications
+ Insert Medications
 INSERT INTO Medications (MedicationName, Price) VALUES
 ('Aspirin', 5.00),
 ('Amoxicillin', 15.50),
 ('Paracetamol', 3.00),
 ('Lipitor', 45.00);
 
--- Insert Prescriptions
+ Insert Prescriptions
 INSERT INTO Prescriptions (AppointmentID, MedicationID, Quantity) VALUES
 (1, 1, 2),
 (1, 4, 1),
@@ -108,7 +101,7 @@ INSERT INTO Prescriptions (AppointmentID, MedicationID, Quantity) VALUES
 (3, 1, 3),
 (4, 3, 2);
 
--- Insert Billings
+ Insert Billings
 INSERT INTO Billings (AppointmentID, Amount, PaymentStatus) VALUES
 (1, 250.00, 'Paid'),
 (2, 150.00, 'Paid'),
