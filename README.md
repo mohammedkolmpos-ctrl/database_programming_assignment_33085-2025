@@ -19,10 +19,6 @@
 
 ## [cite_start]2. Database Creation & Data Insertion (SQL Scripts) [cite: 13]
 
-```sql
--- ========================================================
--- 1. CREATING THE DATABASE TABLES (DDL) WITH PK & FK CONSTRAINTS
--- ========================================================
 
 -- Create Doctors Table with a self-referencing relationship for management
 CREATE TABLE Doctors (
@@ -75,9 +71,6 @@ CREATE TABLE Billings (
     PaymentStatus VARCHAR(20) -- Paid, Unpaid
 );
 
--- ========================================================
--- 2. INSERTING SAMPLE DATA FOR TESTING (DML)
--- ========================================================
 
 -- Insert Doctors (Including Chief Medical Officer and Department Heads)
 INSERT INTO Doctors (DoctorName, Specialty, Salary, HireDate, ManagerID) VALUES
