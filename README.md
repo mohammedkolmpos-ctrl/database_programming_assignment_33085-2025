@@ -4,16 +4,16 @@
 
 ---
 
-## [cite_start]1. Business Scenario & Database Schema 
-[cite_start]This project implements a **Hospital Management System** to optimize clinical operations, track financial performance, and analyze doctor-patient metrics. The database consists of 6 interrelated tables:
-* [cite_start]**Patients**: Stores detailed demographic data for hospital patients.
-* [cite_start]**Doctors**: Contains physician profiles, specialties, salaries, and managerial hierarchies.
-* [cite_start]**Appointments**: Links patients and doctors with specific clinical visit dates and statuses.
-* [cite_start]**Medications**: Maintains the inventory and retail pricing of pharmaceutical products.
-* [cite_start]**Prescriptions**: Tracks the specific medications and quantities prescribed during appointments.
-* [cite_start]**Billings**: Records individual appointment financial transactions and payment status.
+## 1. Business Scenario & Database Schema 
+This project implements a **Hospital Management System** to optimize clinical operations, track financial performance, and analyze doctor-patient metrics. The database consists of 6 interrelated tables:
+* **Patients**: Stores detailed demographic data for hospital patients.
+* **Doctors**: Contains physician profiles, specialties, salaries, and managerial hierarchies.
+* **Appointments**: Links patients and doctors with specific clinical visit dates and statuses.
+* **Medications**: Maintains the inventory and retail pricing of pharmaceutical products.
+* **Prescriptions**: Tracks the specific medications and quantities prescribed during appointments.
+* **Billings**: Records individual appointment financial transactions and payment status.
 
-## [cite_start]2. Database Creation & Data Insertion (SQL Scripts)
+## 2. Database Creation & Data Insertion (SQL Scripts)
 
  Create Doctors Table with a self-referencing relationship for management
 CREATE TABLE Doctors (
